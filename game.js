@@ -30,6 +30,18 @@ $(".btn").click(function(){
   checkAnswer(userClickedPattern.length-1);
 });
 
+$(".btn").on("touchstart", function(event){
+  event.preventDefault();
+
+  const userChosenColour = $(this).attr("id");
+  userClickedPattern.push(userChosenColour);
+  
+  playSound(userChosenColour);
+  animatePress(userChosenColour);
+
+  checkAnswer(userClickedPattern.length-1);
+});
+
 function checkAnswer(currentLevel) {
   if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
     console.log("success");
