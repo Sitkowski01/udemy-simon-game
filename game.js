@@ -19,27 +19,23 @@ function nextSequence(){
    playSound(randomChosenColour);
 }
 
-$(".btn").click(() =>{
+// $(".btn").click(() =>{
+//   const userChosenColour = $(this).attr("id");
+//   userClickedPattern.push(userChosenColour);
+  
+//   playSound(userChosenColour);
+//   animatePress(userChosenColour);
+
+
+//   checkAnswer(userClickedPattern.length-1);
+// });
+
+$(".btn").on("touchend", function(event) {
   const userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
-  
   playSound(userChosenColour);
   animatePress(userChosenColour);
-
-
-  checkAnswer(userClickedPattern.length-1);
-});
-
-$(".btn").on("pointerdown", function(event){
-  event.preventDefault();
-
-  const userChosenColour = $(this).attr("id");
-  userClickedPattern.push(userChosenColour);
-  
-  playSound(userChosenColour);
-  animatePress(userChosenColour);
-
-  checkAnswer(userClickedPattern.length-1);
+  checkAnswer(userClickedPattern.length - 1);
 });
 
 function checkAnswer(currentLevel) {
@@ -93,3 +89,4 @@ function startOver(){
   gamePattern = [];
   started = false;
 }
+
