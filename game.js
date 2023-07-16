@@ -19,23 +19,15 @@ function nextSequence(){
    playSound(randomChosenColour);
 }
 
-// $(".btn").click(() =>{
-//   const userChosenColour = $(this).attr("id");
-//   userClickedPattern.push(userChosenColour);
-  
-//   playSound(userChosenColour);
-//   animatePress(userChosenColour);
-
-
-//   checkAnswer(userClickedPattern.length-1);
-// });
-
-$(".btn").on("touchend", function(event) {
+$(".btn").click(function(){
   const userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
+  
   playSound(userChosenColour);
   animatePress(userChosenColour);
-  checkAnswer(userClickedPattern.length - 1);
+
+
+  checkAnswer(userClickedPattern.length-1);
 });
 
 function checkAnswer(currentLevel) {
@@ -64,6 +56,14 @@ function checkAnswer(currentLevel) {
 }
 
 $(document).keypress(() =>{
+  if (!started) {
+    $("#level-title").text("Level " + level);
+    nextSequence();
+    started = true;
+  }
+});
+
+$(document).on("touchstart", function() {
   if (!started) {
     $("#level-title").text("Level " + level);
     nextSequence();
