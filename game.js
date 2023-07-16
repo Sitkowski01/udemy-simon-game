@@ -30,7 +30,7 @@ $(".btn").click(function(){
   checkAnswer(userClickedPattern.length-1);
 });
 
-$(".btn").on("pointerdown", function(event){
+$(".btn").on("mousedown touchstart", function(event){
   event.preventDefault();
 
   const userChosenColour = $(this).attr("id");
